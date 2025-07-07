@@ -130,7 +130,7 @@
 						activity = `@${user.username}`;
 						details = data.discord_status.charAt(0).toUpperCase() + data.discord_status.slice(1);
 						details = details === 'Dnd' ? 'Do Not Disturb' : details;
-						activityImage = 'default.webp';
+						activityImage = 'default.png';
 						smallImage = '';
 						cancelAnimationFrame(currentRequestAnimationFrame);
 						tick();
