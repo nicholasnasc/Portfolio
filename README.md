@@ -1,29 +1,34 @@
-# Wisnu's Homepage
+# 🎨 Personal Portfolio
 
-## Preview
+![mockup](https://github.com/xafn/afn.im/assets/47723802/e6557c66-b781-4ba4-8784-03615a19b84c)
 
-![Preview 1](./static/preview-1.png)
+A simple site to showcase the art I've made over the years. Check it out at [afn.im](https://afn.im/).
 
-## Stack
+I decided I needed to finally rewrite my site after staring at my horrid old codebase and design for so long. Made using SvelteKit and SCSS.
 
-- [Svelte Kit](https://svelte.dev/) - The fastest way to build Svelte apps.
-- [Lucia Auth](https://lucia-auth.com/) - Authentication from scratch.
-- [mdsvex](https://mdsvex.pngwn.io/) - Markdown preprocessor.
-- [Drizzle ORM](https://orm.drizzle.team/) - Drizzle ORM is a headless TypeScript ORM with a head. 🐲
-- [Tailwind CSS](https://tailwindcss.com) - A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.
+## 📝 Notes
 
-## Running Locally
+- Thanks to [Lanyard API](https://github.com/Phineas/lanyard) for exposing my Discord Rich Presence
+- Burn your eyes at [v1.afn.im](https://v1.afn.im/)
 
-```bash
-git clone https://github.com/wiscaksono/wiscaksono-sv
-cd wiscaksono-sv
-cp .env.example .env
-pnpm install
-pnpm dev
-```
+## ☁️ Hosting
 
-## License
+Steps to follow if you want to replicate the hosting of this site. You may host with whatever service you prefer.
 
-1. You are free to use this code as inspiration.
-2. Please do not copy it directly.
-3. Crediting the author is appreciated.
+1. Go to [Cloudflare Pages](https://pages.dev/)
+2. Create a project and connect your repository
+3. Under `Build settings`, select the `SvelteKit` preset
+4. Under `Environmental variables (advanced)`, add the following variable:
+   - Variable name: `NODE_VERSION`
+   - Value: `21`
+5. Save and deploy
+
+## ⚖️ Licensing
+
+### Code
+
+All website-related code is distributed under the [AGPL license](LICENSE).
+
+### Art Assets
+
+All art assets (files in `static/art/`) are distributed under the [Creative Commons Attribution 4.0 International](static/art/LICENSE-CC-BY) license. You **must** give attribution if you share or repost these assets.

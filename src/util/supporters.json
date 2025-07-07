@@ -1,0 +1,8 @@
+[
+    {
+        "name": "svelte",
+        "icon": "/supporters/svelte.svg",
+        "message":
+            "Svelte is a modern JavaScript framework that compiles components into highly efficient imperative code, making it fast and lightweight. It offers a reactive programming model, allowing developers to build interactive user interfaces with ease. Svelte's simplicity and performance make it a popular choice for building web applications."
+    }
+]
