@@ -1,15 +1,20 @@
 <script>
 	import Tooltip from '../atoms/Tooltip.svelte';
 	import Socials from './Socials.svelte';
+	import LanguageSelector from '../atoms/LanguageSelector.svelte';
+	import { t } from '../../lib/i18n';
 </script>
 
 <hr />
 <footer class="wrapper">
 	<Socials />
+	<div class="center-content">
+		<LanguageSelector />
+	</div>
 	<h6>
-		Made with açaí. &#60;3
-		<Tooltip tip="you're here"><span>nickzin.dev</span></Tooltip>
-		<Tooltip tip="My personal blog">
+		{@html $t('footer.madeWith')}
+		<Tooltip tip={$t('footer.youreHere')}><span>nickzin.dev</span></Tooltip>
+		<Tooltip tip={$t('footer.personalBlog')}>
 			<a href="https://v1.afn.im/" target="_blank" rel="noreferrer">blog.nickzin.dev</a>
 		</Tooltip>
 	</h6>
@@ -30,13 +35,22 @@
 
 	footer {
 		padding-bottom: 2.4rem;
-		display: flex;
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
 		align-items: center;
+		gap: 2rem;
 
 		@media screen and (max-width: 768px) {
-			flex-direction: column;
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			text-align: center;
 		}
+	}
+
+	.center-content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	h6 {

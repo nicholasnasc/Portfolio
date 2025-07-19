@@ -2,6 +2,7 @@
 	import HeroImage from '../../components/atoms/HeroImage.svelte';
 	import Button from '../atoms/Button.svelte';
 	import Socials from '../molecules/Socials.svelte';
+	import { t } from '../../lib/i18n';
 
 	function handleClick() {
 		const el = document.querySelector('#code');
