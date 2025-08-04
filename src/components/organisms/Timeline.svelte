@@ -1,73 +1,82 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { t } from '../../lib/i18n';
 
 	interface TimelineEvent {
 		id: string;
-		title: string;
-		company: string;
-		period: string;
-		type: 'work' | 'education' | 'project';
-		description: string;
+		titleKey: string;
+		companyKey: string;
+		periodKey: string;
+		type: 'remote' | 'onSite' | 'hybrid';
+		descriptionKey: string;
 		technologies: string[];
-		achievements: string[];
+		achievementKeys: string[];
 	}
 
 	let events: TimelineEvent[] = [
 		{
 			id: '1',
-			title: 'Systems Analyst & Data Management Specialist',
-			company: 'Discloud',
-			period: '2022 - Present',
-			type: 'work',
-			description: 'Leading the development of scalable cloud hosting solutions serving over 60,000 simultaneous users and 110,000 hosted applications.',
-			technologies: ['Node.js', 'Docker', 'MongoDB', 'Redis', 'AWS'],
-			achievements: [
-				'Architected microservices handling 60K+ concurrent users',
-				'Optimized database performance by 300%',
-				'Led team of 5 developers',
-				'Implemented CI/CD pipelines reducing deployment time by 80%'
+			titleKey: 'timeline.job1.title',
+			companyKey: 'timeline.job1.company',
+			periodKey: 'timeline.job1.period',
+			type: 'remote',
+			descriptionKey: 'timeline.job1.description',
+			technologies: ['Node.js', 'Docker', 'SQL', 'Svelte', 'AWS', 'MongoDB', 'DevOps'],
+			achievementKeys: [
+				'timeline.job1.achievement1',
+				'timeline.job1.achievement2',
+				'timeline.job1.achievement3',
+				'timeline.job1.achievement4',
+				'timeline.job1.achievement5'
 			]
 		},
 		{
 			id: '2',
-			title: 'Full Stack Developer',
-			company: 'Freelance',
-			period: '2020 - 2022',
-			type: 'work',
-			description: 'Developed custom web and mobile applications for various clients, focusing on modern technologies and best practices.',
-			technologies: ['React', 'Flutter', 'Node.js', 'PostgreSQL', 'TypeScript'],
-			achievements: [
-				'Delivered 20+ successful projects',
-				'Maintained 98% client satisfaction rate',
-				'Built e-commerce platforms handling $100K+ monthly transactions'
+			titleKey: 'timeline.job2.title',
+			companyKey: 'timeline.job2.company',
+			periodKey: 'timeline.job2.period',
+			type: 'onSite',
+			descriptionKey: 'timeline.job2.description',
+			technologies: ['Java', 'SQL', 'JBoss', 'Firebird', 'ERP'],
+			achievementKeys: [
+				'timeline.job2.achievement1',
+				'timeline.job2.achievement2',
+				'timeline.job2.achievement3',
+				'timeline.job2.achievement4',
+				'timeline.job2.achievement5'
 			]
 		},
 		{
 			id: '3',
-			title: 'Mobile App Developer',
-			company: 'Tech Startup',
-			period: '2019 - 2020',
-			type: 'work',
-			description: 'Specialized in Flutter development, creating cross-platform mobile applications with focus on performance and user experience.',
-			technologies: ['Flutter', 'Dart', 'Firebase', 'SQLite', 'REST APIs'],
-			achievements: [
-				'Published 5 apps with 50K+ downloads',
-				'Reduced app crash rate to < 0.1%',
-				'Implemented real-time features for social apps'
+			titleKey: 'timeline.job3.title',
+			companyKey: 'timeline.job3.company',
+			periodKey: 'timeline.job3.period',
+			type: 'hybrid',
+			descriptionKey: 'timeline.job3.description',
+			technologies: ['tech.systemsAnalysis', 'tech.processAutomation', 'Java', 'SQL', 'tech.softwareQuality', 'tech.automatedTesting', 'tech.informationSystems'],
+			achievementKeys: [
+				'timeline.job3.achievement1',
+				'timeline.job3.achievement2',
+				'timeline.job3.achievement3',
+				'timeline.job3.achievement4',
+				'timeline.job3.achievement5'
 			]
 		},
 		{
 			id: '4',
-			title: 'Computer Science',
-			company: 'Universidade Federal do Ceará',
-			period: '2022 - Present',
-			type: 'education',
-			description: 'Currently pursuing Computer Science degree, focusing on algorithms, data structures, and software engineering principles.',
-			technologies: ['Python', 'Java', 'C++', 'Algorithms', 'Data Structures'],
-			achievements: [
-				'GPA: 8.5/10',
-				'Active member of programming competitive team',
-				'Teaching assistant for Data Structures course'
+			titleKey: 'timeline.job4.title',
+			companyKey: 'timeline.job4.company',
+			periodKey: 'timeline.job4.period',
+			type: 'remote',
+			descriptionKey: 'timeline.job4.description',
+			technologies: ['Node.js', 'EJS', 'MySQL', 'Tailwind CSS', 'Java', 'Kotlin'],
+			achievementKeys: [
+				'timeline.job4.achievement1',
+				'timeline.job4.achievement2',
+				'timeline.job4.achievement3',
+				'timeline.job4.achievement4',
+				'timeline.job4.achievement5',
+				'timeline.job4.achievement6'
 			]
 		}
 	];
@@ -100,7 +109,7 @@
 
 <section id="experience" class="wrapper">
 	<div class="title">
-		<h2><span>career</span>:timeline</h2>
+		<h2><span>{$t('timeline.career')}</span>:{$t('timeline.title')}</h2>
 	</div>
 	
 	<div class="timeline">
@@ -109,9 +118,9 @@
 			<div class="timeline-item {visibleEvents[index] ? 'visible' : ''} {event.type}" style="--delay: {index * 0.2}s">
 				<div class="timeline-marker">
 					<div class="marker-icon">
-						{#if event.type === 'work'}
+						{#if event.type === 'onSite'}
 							💼
-						{:else if event.type === 'education'}
+						{:else if event.type === 'remote'}
 							🎓
 						{:else}
 							🚀
@@ -122,28 +131,30 @@
 				<div class="timeline-content">
 					<div class="content-header">
 						<div class="event-info">
-							<h3>{event.title}</h3>
-							<h4>{event.company}</h4>
-							<span class="period">{event.period}</span>
+							<h3>{$t(event.titleKey)}</h3>
+							<h4>{$t(event.companyKey)}</h4>
+							<span class="period">{$t(event.periodKey)}</span>
 						</div>
 						<div class="event-type {event.type}">
-							{event.type}
+							{$t(`timeline.workType.${event.type.replace('-', '')}`)}
 						</div>
 					</div>
 					
-					<p>{event.description}</p>
+					<p>{$t(event.descriptionKey)}</p>
 					
 					<div class="technologies">
 						{#each event.technologies as tech}
-							<span class="tech-tag">{tech}</span>
+							<span class="tech-tag">
+								{tech.startsWith('tech.') ? $t(tech) : tech}
+							</span>
 						{/each}
 					</div>
 					
 					<div class="achievements">
-						<h5>Key Achievements:</h5>
+						<h5>{$t('timeline.keyAchievements')}</h5>
 						<ul>
-							{#each event.achievements as achievement}
-								<li>{achievement}</li>
+							{#each event.achievementKeys as achievementKey}
+								<li>{$t(achievementKey)}</li>
 							{/each}
 						</ul>
 					</div>
@@ -331,17 +342,17 @@
 		font-weight: 500;
 		text-transform: uppercase;
 		
-		&.work {
+		&.onSite {
 			background: #4CAF5033;
 			color: #4CAF50;
 		}
 		
-		&.education {
+		&.remote {
 			background: #2196F333;
 			color: #2196F3;
 		}
 		
-		&.project {
+		&.hybrid {
 			background: #FF980033;
 			color: #FF9800;
 		}

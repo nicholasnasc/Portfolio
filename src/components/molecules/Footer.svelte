@@ -15,7 +15,7 @@
 		{@html $t('footer.madeWith')}
 		<Tooltip tip={$t('footer.youreHere')}><span>nickzin.dev</span></Tooltip>
 		<Tooltip tip={$t('footer.personalBlog')}>
-			<a href="https://v1.afn.im/" target="_blank" rel="noreferrer">blog.nickzin.dev</a>
+			<a href="https://blog.nickzin.dev/" target="_blank" rel="noreferrer">blog.nickzin.dev</a>
 		</Tooltip>
 	</h6>
 </footer>
